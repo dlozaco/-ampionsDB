@@ -1,0 +1,35 @@
+@startuml
+
+class Match{
+    date: Date
+    team1: Equipo
+    team2: Equipo
+    score: Resultado
+    MVP: String
+}
+
+class Score{
+    goalTeam1: Integer
+    goalTeam2: Integer
+}
+
+class Team{
+    players: List<String>
+}
+
+class Goals{
+    idPartido: Integer
+    idEquipo: Integer
+    name: String
+}
+
+class Assistence{
+    idPartido: Integer
+    idEquipo: Integer
+    name: String
+}
+
+Match --* "*" Goals: "Make"
+Match --*  "*" Assistence: "Make"
+
+@enduml
