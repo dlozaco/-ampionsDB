@@ -1,8 +1,6 @@
 
-SELECT idPlayer
-FROM players
-WHERE NAME = 'El Mago'
-
-SELECT LENGTH(NAME), NAME FROM Players WHERE NAME LIKE '%El Mago%';
-
-SHOW CREATE TABLE teams;
+SELECT p.name, COUNT(*)
+FROM players p
+JOIN goals g ON p.idPlayer = g.idGoalPlayer
+GROUP BY (p.name)
+ORDER BY COUNT(*) DESC;
