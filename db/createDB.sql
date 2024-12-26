@@ -56,19 +56,19 @@ DELIMITER ;
 CREATE OR REPLACE TABLE Goals(
 	idMMatch INT(11) NOT NULL,
 	idTeam INT(11) NOT NULL,
-	NAME VARCHAR(256) NOT NULL,
-	PRIMARY KEY(idMMatch),
+	idGoalPlayer INT(11) NOT NULL,
+	FOREIGN KEY(idMMatch) REFERENCES MMatchs(idMMatch),
 	FOREIGN KEY(idTeam) REFERENCES teams(idTeam),
-	FOREIGN KEY(idMMatch) REFERENCES MMatchs(idMMatch)
-);
+	FOREIGN KEY(idGoalPlayer) REFERENCES players(idPlayer)
 
+);
 
 CREATE OR REPLACE TABLE Assistences(
 	idMMatch INT(11) NOT NULL,
 	idTeam INT(11) NOT NULL,
-	NAME VARCHAR(256) NOT NULL,
-	PRIMARY KEY(idMMatch),
+	idAssistencePlayer INT(11) NOT NULL,
+	FOREIGN KEY(idMMatch) REFERENCES MMatchs(idMMatch),
 	FOREIGN KEY(idTeam) REFERENCES teams(idTeam),
-	FOREIGN KEY(idMMatch) REFERENCES MMatchs(idMMatch)
+	FOREIGN KEY(idAssistencePlayer) REFERENCES players(idPlayer)
 );
 
