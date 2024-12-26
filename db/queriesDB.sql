@@ -1,0 +1,8 @@
+
+SELECT idPlayer
+FROM players
+WHERE NAME = 'El Mago'
+
+SELECT LENGTH(NAME), NAME FROM Players WHERE NAME LIKE '%El Mago%';
+
+SHOW CREATE TABLE teams;
