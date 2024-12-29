@@ -31,16 +31,22 @@ CREATE OR REPLACE VIEW assistencePlayers AS
 	GROUP BY (p.name)
 	ORDER BY COUNT(*) DESC;
 
-SELECT p.name, gp.goal + ap.assistence AS gpAp
+SELECT p.name, ap.assistence AS gpAp
 FROM players p
-LEFT JOIN goalsplayers gp ON gp.idPlayer = p.idPlayer
-LEFT JOIN assistenceplayers ap ON ap.idPlayer = p.idPlayer
-ORDER BY gpAp DESC
-LIMIT 3;
+JOIN assistenceplayers ap ON ap.idPlayer = p.idPlayer
+WHERE();
 
 -- MVP of each game and his team
 SELECT m.idMMatch, m.date_match, p.name, pt.idTeam
 FROM mmatchs m
 JOIN players p ON m.idMVP = p.idPlayer
 JOIN teamsplayers pt ON p.idPlayer = pt.idPlayer
-WHERE pt.idTeam = m.idTeam1 OR pt.idTeam = m.idTeam2
+WHERE pt.idTeam = m.idTeam1 OR pt.idTeam = m.idTeam2;
+
+
+-- Shows main information of a match
+SELECT m.date_match, m.idTeam1 AS Team1, m.idTeam2 AS Team2, 
+       s.goalsTeam1, s.goalsTeam2, p.NAME AS MVP
+FROM MMatchs m
+JOIN Scores s ON m.idScore = s.idScore
+JOIN Players p ON m.idMVP = p.idPlayer;
